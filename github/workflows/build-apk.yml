@@ -20,12 +20,12 @@ jobs:
 
 
       # --------------------------------------------------
-      # 2. Set up Node.js 
+      # 2. Set up Node.js 24
       # --------------------------------------------------
-      - name: Set up Node.js
+      - name: Set up Node.js 24
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: 'npm'
 
 
@@ -37,7 +37,7 @@ jobs:
 
 
       # --------------------------------------------------
-      # 4. Build Ionic/vue application
+      # 4. Build Ionic/Vue application
       # --------------------------------------------------
       - name: Build Ionic application
         run: npm run build
@@ -90,13 +90,13 @@ jobs:
       # --------------------------------------------------
       - name: Build Android APK
         working-directory: android
-        run: ./gradlew assembleDebug
+        run: ./gradlew --no-daemon assembleDebug
 
 
       # --------------------------------------------------
       # 11. Rename APK
       # --------------------------------------------------
-      - name: ionic-calculator.apk
+      - name: Rename APK
         run: |
           cp android/app/build/outputs/apk/debug/app-debug.apk IonicCalculator.apk
 
